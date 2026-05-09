@@ -1,0 +1,9 @@
+{
+  "name": "gstack-skills-runtime",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "diff": "^7.0.0",
+    "playwright": "^1.58.2"
+  }
+}

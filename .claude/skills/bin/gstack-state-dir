@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# gstack-state-dir — resolve repo-local .gstack state directory
+# Usage: gstack-state-dir
+set -euo pipefail
+
+if [ -n "${GSTACK_STATE_DIR:-}" ]; then
+  echo "$GSTACK_STATE_DIR"
+  exit 0
+fi
+
+ROOT="$(git rev-parse --show-toplevel 2>/dev/null || pwd)"
+echo "$ROOT/.gstack"
