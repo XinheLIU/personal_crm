@@ -32,8 +32,8 @@ venv/
 # Node (if used at repo root)
 node_modules/
 
-# Builds and caches
-dist/
+# Builds and caches (root only — keep .claude/skills/browse/dist for gstack browse CLI)
+/dist/
 .cache/
 *.log
 
