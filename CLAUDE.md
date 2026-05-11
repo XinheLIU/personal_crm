@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository status
 
-This repo is **mid-scaffold**. Only the design doc (`docs/idea.md`) and `schema.sql` exist. The CLI (`crm.py`), prompts, skills, and data directories described below are **planned but not yet present**. When asked to implement, follow the build order in `docs/idea.md` §12. Do not invent files that the spec does not describe.
+This repo is **mid-scaffold**. The design doc (`docs/idea.md`), `schema.sql`, and project infrastructure files (`CLAUDE.md`, `CHANGELOG.md`, `TODOS.md`, `VERSION`) exist. The CLI (`crm.py`), prompts, skills, and data directories described below are **planned but not yet present**. When asked to implement, follow the build order in `docs/idea.md` §12. Do not invent files that the spec does not describe.
 
 ## What this project is (Compass)
 
