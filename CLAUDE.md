@@ -1,16 +1,18 @@
 # CLAUDE.md
 
-Last updated: 2026-05-11
+Last updated: 2026-05-12
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Repository status
 
-This repo is **mid-scaffold**. The design doc (`docs/idea.md`), `schema.sql`, and project infrastructure files (`CLAUDE.md`, `CHANGELOG.md`, `TODOS.md`, `VERSION`) exist. The CLI (`crm.py`), prompts, skills, and data directories described below are **planned but not yet present**. When asked to implement, follow the build order in `docs/idea.md` §12. Do not invent files that the spec does not describe.
+The core system is **implemented** (v0.1.1.0). `crm.py` (339 lines), `prompts/` (tracker, analyzer, strategist), `.claude/skills/track/`, and `data/seed.sql` are committed. The design doc is at `docs/ideas/idea.md`. Read it end-to-end before any non-trivial change — it is the source of truth for design intent, naming, and agent contracts.
+
+For the UI frontend plan, see `docs/ui-plan.md` (not yet implemented). For the full spec build order, see `docs/ideas/idea.md` §12.
 
 ## What this project is (Compass)
 
-Single-user, local personal CRM. Three agents driven by prompts + slash commands, backed by SQLite + markdown. Read `docs/idea.md` end-to-end before any non-trivial change — it is the source of truth for design intent, naming, and what each agent must NOT do.
+Single-user, local personal CRM. Three agents driven by prompts + slash commands, backed by SQLite + markdown. Read `docs/ideas/idea.md` end-to-end before any non-trivial change — it is the source of truth for design intent, naming, and what each agent must NOT do.
 
 - **Tracker** (`/track`): one free-text sentence → `(target, lane, touchpoint)` rows. Write-path.
 - **Analyzer** (`/analyze`): per-target read-only timeline + recommendations.
@@ -40,7 +42,7 @@ Five tables. UUIDs generated in Python; all timestamps ISO-8601 UTC strings. `PR
 
 `schema.sql` is idempotent (`CREATE ... IF NOT EXISTS`). Re-run via `compass migrate` after edits — never write a migration script.
 
-## Planned commands (per spec — implement when building `crm.py`)
+## Implemented commands
 
 ```bash
 compass init                  # create dirs + apply schema
@@ -48,13 +50,14 @@ compass migrate               # reapply schema.sql idempotently
 compass track "..."           # → /track skill
 compass analyze <target_id>   # → /analyze skill
 compass review                # → /review skill
+compass seed                  # inject demo data (4 targets, 5 lanes, 10 touchpoints)
 compass sql "<query>"         # raw read query
 ```
 
 ## Stack constraints
 
 - Python via **uv** (no pip, no poetry, no global installs). Always isolated env.
-- One CLI file (`crm.py`, ~200 lines target). No package layout, no class hierarchy.
+- One CLI file (`crm.py`, ~340 lines). No package layout, no class hierarchy.
 - SQLite (`crm.db`, gitignored). Markdown for unstructured (`data/journal/`, `data/retros/`, `data/targets/<id>/notes.md`, `north_star.md`, `profile.md`).
 - Official SQLite MCP server, mounted **read-only** on `crm.db`.
 - Confirm before adding any dependency outside this stack.

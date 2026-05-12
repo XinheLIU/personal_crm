@@ -8,7 +8,7 @@ This file provides guidance to AGENTS when working with code in this repository.
 
 ## Repository status
 
-This repo is **mid-scaffold**. The design doc (`docs/idea.md`), `schema.sql`, and project infrastructure files (`CLAUDE.md`, `CHANGELOG.md`, `TODOS.md`, `VERSION`) exist. The CLI (`crm.py`), prompts, skills, and data directories described below are **planned but not yet present**. When asked to implement, follow the build order in `docs/idea.md` §12. Do not invent files that the spec does not describe.
+The core system is **implemented** (v0.1.1.0). `crm.py` (339 lines), `prompts/` (tracker, analyzer, strategist), `.claude/skills/track/`, and `data/seed.sql` are committed. The design doc is at `docs/ideas/idea.md`.
 
 ## What this project is (Compass)
 
