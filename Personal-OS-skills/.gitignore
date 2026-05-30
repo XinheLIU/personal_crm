@@ -1,0 +1,29 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+*.swp
+*.swo
+*~
+
+# IDE
+.vscode/
+.idea/
+*.code-workspace
+
+# Project
+.codex/*
+!.codex/skills
+.claude/projects/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.env.local
+
+# OS
+Thumbs.db
+
+# personal
+user-next-step.md

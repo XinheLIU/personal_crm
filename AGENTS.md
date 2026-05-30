@@ -1,5 +1,7 @@
 This file provides guidance to AGENTS when working with code in this repository.
 
+Last updated: 2026-05-30
+
 ## Rules
 
 1. dont commit to git or push unless the user tells you to.
@@ -19,6 +21,15 @@ Single-user, local personal CRM. Three agents driven by prompts + slash commands
 - **Strategist** (`/review`): periodic 复盘 — synthesizes recent cycle, extracts assets, updates `profile.md`, writes a `retro_brief`.
 
 The runtime is Claude Code itself. The CLI gathers data, calls a skill, and applies JSON-shaped DB writes the LLM returns. No server, no ORM, no asyncio.
+
+## Personal OS Skills
+
+`Personal-OS-skills/` is the bottom-up personal strategy skill lab and real test corpus. Root Git owns it as a normal subfolder.
+
+- Compass tracks targets, lanes, touchpoints, assets, and reviews.
+- Personal OS skills synthesize personal strategy, test reusable development methods, and package skill-system learnings.
+- Keep Personal OS strategy skills under `Personal-OS-skills/skills/`; do not turn them into Compass CRM agents unless the schema and prompts explicitly need that later.
+- The near-term path is: develop and test personal-development skills first, form a strategy system, then package reusable skills.
 
 ## Architecture invariants (do not violate)
 
